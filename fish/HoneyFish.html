@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Honey Fish</title>
+    <link rel="stylesheet" href="./css/css.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .all_bg{
+            width: 800px;
+            height:600px;
+        }
+        #allcanvas{
+            position: relative;
+            width: 800px;
+            height:600px;
+
+        }
+        #canvas1,#canvas2{
+            position: absolute;
+            bottom: 0;
+            left:0;
+            z-index: 1;
+        }
+        #canvas2{
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+<!--主背景canvas-->
+<div class="all_bg">
+    <div id="allcanvas">
+        <canvas id="canvas1" width="800" height="600"></canvas>
+        <canvas id="canvas2" width="800" height="600"></canvas>
+    </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
