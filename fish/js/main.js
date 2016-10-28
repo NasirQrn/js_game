@@ -15,6 +15,8 @@ var bgPic = new Image(); // bgPic.src = "XXXX" 给浏览器缓存了一张图片
 
 var anemone ;
 
+var fruit ;
+
 document.body.onload = game;
 function game(){
     //lastTime = Date.now();
@@ -26,8 +28,8 @@ function game(){
 }
 function init(){
     //获得canvas context
-    can1 = document.getElementById("canvas1");
-    can2 = document.getElementById("canvas2");
+    can1 = document.getElementById("canvas1");//fishes , dust , UI , circle
+    can2 = document.getElementById("canvas2");//background , anemone ,fruits
 
     ctx1 =can1.getContext("2d");
     ctx2 =can2.getContext("2d");
@@ -42,6 +44,9 @@ function init(){
     anemone = new anemoneObj();
     anemone.init();
 
+    fruit = new fruitObj();
+    fruit.init();
+
 }
 //循环
 function gameloop(){
@@ -54,4 +59,5 @@ function gameloop(){
     window.requestAnimFrame(gameloop);//相对于 setInterval ,setTimeout 来说 智能------》根据机器来自动进行 循环
 
     drawBackground();//todo 加载背景 （原视频 感觉一直刷新有问题 所有在init显示 ）
+    anemone.draw();
 }
