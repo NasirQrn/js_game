@@ -60,4 +60,5 @@ function gameloop(){
 
     drawBackground();//todo 加载背景 （原视频 感觉一直刷新有问题 所有在init显示 ）
     anemone.draw();
+    fruit.draw();
 }
