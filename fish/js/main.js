@@ -19,8 +19,8 @@ var fruit ;
 
 document.body.onload = game;
 function game(){
-    //lastTime = Date.now();
-    //deltaTime = 0;
+    lastTime = Date.now();
+    deltaTime = 0;
 
 
     init();
@@ -51,14 +51,15 @@ function init(){
 //循环
 function gameloop(){
     //所用时间
-    //var now = Date.now();
-    //deltaTime = now - lastTime;
-    //lastTime = Date.now();
+    var now = Date.now();
+    deltaTime = now - lastTime;//两帧之间时间间隔
+    lastTime = now;
     //    console.log(deltaTime);
 
     window.requestAnimFrame(gameloop);//相对于 setInterval ,setTimeout 来说 智能------》根据机器来自动进行 循环
 
     drawBackground();//todo 加载背景 （原视频 感觉一直刷新有问题 所有在init显示 ）
     anemone.draw();
+    fruitMonitor();
     fruit.draw();
 }
