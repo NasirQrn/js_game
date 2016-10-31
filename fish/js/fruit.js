@@ -80,6 +80,9 @@ fruitObj.prototype.born = function (param) {//初始属性
     this.fruitType[param] = type > 0.3 ? "orange" : "blue"; //orange , blue ;
     console.log(this.fruitType[param]);
 };
+fruitObj.prototype.dead = function (e) {
+    this.alive[e] = false;
+};
 
 //果实监视功能
 function fruitMonitor() {

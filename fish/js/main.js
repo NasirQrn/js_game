@@ -19,6 +19,8 @@ var fruit ;
 
 var mom;
 
+var baby;
+
 //鼠标
 var mx;
 var my;
@@ -58,6 +60,9 @@ function init(){
     mom = new momObj();
     mom.init();
 
+    baby = new babyObj();
+    baby.init();
+
     mx = canWidth * 0.5;
     my = canHeight * 0.5;
 
@@ -68,19 +73,22 @@ function gameloop(){
     var now = Date.now();
     deltaTime = now - lastTime;//两帧之间时间间隔
     lastTime = now;
+    if (deltaTime > 40) deltaTime = 40;
     //    console.log(deltaTime);
 
     window.requestAnimFrame(gameloop);//相对于 setInterval ,setTimeout 来说 智能------》根据机器来自动进行 循环
 
     drawBackground();//todo 加载背景 （原视频 感觉一直刷新有问题 所有在init显示 ）
     anemone.draw();
-    fruitMonitor();
+    fruitMonitor();//监测果实
     fruit.draw();
-
 
     //每次重新绘制
     ctx1.clearRect(0, 0, canWidth, canHeight);
     mom.draw();
+    momFruitsCollision();
+    baby.draw();
+
 }
 
 function onMouseMove(e) {
