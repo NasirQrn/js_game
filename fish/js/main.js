@@ -17,6 +17,11 @@ var anemone ;
 
 var fruit ;
 
+var mom;
+
+//鼠标
+var mx;
+var my;
 document.body.onload = game;
 function game(){
     lastTime = Date.now();
@@ -34,6 +39,9 @@ function init(){
     ctx1 =can1.getContext("2d");
     ctx2 =can2.getContext("2d");
 
+    //鼠标监测事件
+    can1.addEventListener('mousemove', onMouseMove, false);//鼠标移动的时候 运行onMouseMove;
+
     bgPic.src = "./src/background.jpg"; //初始化 new Image();
 
     canWidth = can1.width;
@@ -46,6 +54,12 @@ function init(){
 
     fruit = new fruitObj();
     fruit.init();
+
+    mom = new momObj();
+    mom.init();
+
+    mx = canWidth * 0.5;
+    my = canHeight * 0.5;
 
 }
 //循环
@@ -62,4 +76,17 @@ function gameloop(){
     anemone.draw();
     fruitMonitor();
     fruit.draw();
+
+
+    //每次重新绘制
+    ctx1.clearRect(0, 0, canWidth, canHeight);
+    mom.draw();
+}
+
+function onMouseMove(e) {
+    if (e.offsetX || e.layerX) {//兼容浏览器  layerX是FF、chrome识别，offsetX是除了FF之外
+        mx = e.offsetX == undefined ? e.layerX : e.offsetX;
+        my = e.offsetY == undefined ? e.layerY : e.offsetY;
+        console.log(mx);
+    }
 }
